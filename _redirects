@@ -1,0 +1,35 @@
+# Redirect all unauthenticated users to the login page
+/* /login 401!
+
+# Home page (accessible to all roles)
+/
+/ / 200!
+
+# Admin-specific pages
+/dashboard/list/teachers /unauthorized 401! Role=admin
+/dashboard/list/students /unauthorized 401! Role=admin
+/dashboard/list/parents /unauthorized 401! Role=admin
+/dashboard/list/subjects /unauthorized 401! Role=admin
+/dashboard/list/classes /unauthorized 401! Role=admin
+/dashboard/list/lessons /unauthorized 401! Role=admin
+
+# Teacher-specific pages
+/dashboard/list/teachers /dashboard 200! Role=teacher
+/dashboard/list/classes /dashboard 200! Role=teacher
+
+# Shared pages (Admin, Teacher, Student, Parent)
+/dashboard/list/exams /dashboard/exams 200!
+/dashboard/list/assignments /dashboard/assignments 200!
+/dashboard/list/results /dashboard/results 200!
+/dashboard/list/attendance /dashboard/attendance 200!
+/dashboard/list/events /dashboard/events 200!
+/dashboard/list/messages /dashboard/messages 200!
+/dashboard/list/announcements /dashboard/announcements 200!
+
+# Profile and Settings (all roles)
+# Direct all roles to `/profile` or `/settings`
+/profile /profile 200!
+/settings /settings 200!
+
+# Logout (all roles)
+/logout /logout 200!
