@@ -209,7 +209,7 @@ const renderRow = (item: ResultList) => {
       teacherName: assessment.lesson.teacher.name,
       teacherSurname: assessment.lesson.teacher.surname,
       score: item.score,
-      className: assessment.lesson.class.name,
+      const className = assessment.lesson?.class?.name ?? "Default Class Name";
       startTime: isExam ? assessment.startTime : assessment.startDate,
     };
   })
