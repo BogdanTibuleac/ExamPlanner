@@ -101,7 +101,7 @@ model Subject {
 model Lesson {
   id        Int      @id @default(autoincrement())
   name      String
-  day       Day
+  day       Day?  @default(MONDAY)
   startTime DateTime
   endTime   DateTime
 

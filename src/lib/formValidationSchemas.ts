@@ -125,7 +125,7 @@ export const lessonSchema = z
     name: z.string().min(1, { message: "Lesson name is required!" }),
     day: z.enum(["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"], {
       message: "Day is required!",
-    }),
+    }).optional(),
     startTime: z.coerce.date({ message: "Start time is required!" }),
     endTime: z.coerce.date({ message: "End time is required!" }),
     subjectId: z.coerce.number().min(1, { message: "Subject ID is required!" }),

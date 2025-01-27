@@ -15,7 +15,7 @@ const events = [
       id: 1,
       title: "Winter exam session",
       time: "09:00 AM - 2:00 PM",
-      description: "Final Planning",
+      description: "20.01.2025 - 09.02.2025",
     },
     {
       id: 2,

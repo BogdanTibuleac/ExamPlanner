@@ -1,5 +1,5 @@
 # Redirect all unauthenticated users to the login page
-/* /login 401!
+/* / 200!
 
 # Home page (accessible to all roles)
 /

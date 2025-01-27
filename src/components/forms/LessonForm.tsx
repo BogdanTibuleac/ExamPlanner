@@ -81,14 +81,25 @@ const LessonForm = ({
     </h1>
 
     <div className="flex justify-between flex-wrap gap-4">
-      <InputField
-        label="Lesson Name"
-        name="name"
+        <div className="flex flex-col gap-2 w-full md:max-w-[45%]">
+      <label htmlFor="name" className="text-xs text-gray-500">
+        Lesson Name
+      </label>
+      <input
+        id="name"
+        type="text"
         defaultValue={data?.name}
-        register={register}
-        error={errors?.name}
+        {...register("name")} // This automatically assigns the name attribute
+        className={`ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full ${
+          errors?.name ? "ring-red-400" : ""
+        }`}
       />
-      <div className="flex flex-col gap-2 w-full md:max-w-[59%]">
+      {errors?.name?.message && (
+        <p className="text-xs text-red-400">{errors.name.message.toString()}</p>
+      )}
+    </div>
+
+      <div className="flex flex-col gap-2 w-full md:max-w-[45%]">
         <label className="text-xs text-gray-500">Subject</label>
         <select
           className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
@@ -106,42 +117,35 @@ const LessonForm = ({
         )}
       </div>
       
-      {/* Day Field as a Select Component */}
-      <div className="flex flex-col gap-2 w-full md:max-w-[25%]">
-        <label className="text-xs text-gray-500">Day</label>
-        <select
-          className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
-          {...register("day")}
-          defaultValue={data?.day}
-        >
-          <option value="">Select a Day</option>
-          <option value="MONDAY">Monday</option>
-          <option value="TUESDAY">Tuesday</option>
-          <option value="WEDNESDAY">Wednesday</option>
-          <option value="THURSDAY">Thursday</option>
-          <option value="FRIDAY">Friday</option>
-        </select>
-        {errors.day?.message && (
-          <p className="text-xs text-red-400">{errors.day.message.toString()}</p>
-        )}
-      </div>
+     
 
-      <InputField
-        label="Start Time"
-        name="startTime"
-        defaultValue={data?.startTime}
-        register={register}
-        error={errors?.startTime}
-        type="datetime-local"
-      />
-      <InputField
-        label="End Time"
-        name="endTime"
-        defaultValue={data?.endTime}
-        register={register}
-        error={errors?.endTime}
-        type="datetime-local"
-      />
+        {/* Start Time Field */}
+        <div className="flex flex-col gap-2 w-full md:max-w-[45%]">
+          <label className="text-xs text-gray-500">Start Time</label>
+          <input
+            type="datetime-local"
+            className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
+            {...register("startTime")}
+            defaultValue={data?.startTime}
+          />
+          {errors.startTime?.message && (
+            <p className="text-xs text-red-400">{errors.startTime.message.toString()}</p>
+          )}
+        </div>
+
+        {/* End Time Field */}
+        <div className="flex flex-col gap-2 w-full md:max-w-[45%]">
+          <label className="text-xs text-gray-500">End Time</label>
+          <input
+            type="datetime-local"
+            className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
+            {...register("endTime")}
+            defaultValue={data?.endTime}
+          />
+          {errors.endTime?.message && (
+            <p className="text-xs text-red-400">{errors.endTime.message.toString()}</p>
+          )}
+        </div>
 
        {/* Class Field as a Select Component */}
        <div className="flex flex-col gap-2 w-full md:max-w-[45%]">

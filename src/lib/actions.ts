@@ -811,7 +811,7 @@ export const createLesson = async (
     await prisma.lesson.create({
       data: {
         name: data.name,
-        day: data.day,
+        day: data.day || null,
         startTime: data.startTime,
         endTime: data.endTime,
         subjectId: data.subjectId,
@@ -869,7 +869,7 @@ export const updateLesson = async (data: LessonSchema) => {
       where: { id: data.id },
       data: {
         name: data.name,
-        day: data.day,
+        day: data.day || null,
         startTime: data.startTime,
         endTime: data.endTime,
         subjectId: data.subjectId,
